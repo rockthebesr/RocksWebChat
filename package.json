@@ -1,0 +1,24 @@
+{
+  "name": "rockswebchat",
+  "version": "1.0.0",
+  "description": "real time chat app by RLuo",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.15.3",
+    "socket.io": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rockthebesr/RocksWebChat.git"
+  },
+  "author": "RLuo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rockthebesr/RocksWebChat/issues"
+  },
+  "homepage": "https://github.com/rockthebesr/RocksWebChat#readme"
+}
