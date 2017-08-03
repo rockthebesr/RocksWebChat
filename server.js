@@ -1,27 +1,18 @@
-var express = require('express');
-var app = express();
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var port = process.env.PORT || 3000;
 
-app.get('/', function(req, res, next) {
-  res.sendFile(__dirname + '/public/index.html')
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
 });
 
-app.use(express.static('public'));
-
-
-io.on('connection', function(client) {
-	console.log('Client connected...');
-
-	client.on('join', function(data) {
-		console.log(data);
-	});
-
-  client.on('messages', function(data){
-    client.emit('thread', data);
-    client.broadcast.emit('thread', data);
+io.on('connection', function(socket){
+  socket.on('messages', function(msg){
+    io.emit('chat message', msg);
   });
 });
 
-
-server.listen(7777);
+http.listen(port, function(){
+  console.log('listening on *:' + port);
+});
