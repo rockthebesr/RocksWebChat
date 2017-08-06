@@ -2,7 +2,7 @@
     <head>
       <title> Real Time Chat </title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" href="/Users/luorock/Documents/projects/RocksWebChat/public/style.css" />
+      <link rel="stylesheet" href="public/style.css" />
     </head>
     <body>
         <h1> Chat! </h1>
@@ -16,27 +16,7 @@
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
         <script src="/socket.io/socket.io.js"></script>
-        <script>
-        $(function() {
-          var socket = io();
-          socket.on('connect', function(data) {
-              socket.emit('join', 'Hello server from client');
-          });
-
-          socket.on('chat message', function(msg){
-            $('#thread').append($('<li>').text(msg));
-            window.scrollTo(0, document.body.scrollHeight);
-          });
-
-          // sends message to server, resets & prevents default form action
-          $('form').submit(function() {
-            var message = $('#message').val();
-            socket.emit('messages', message);
-            this.reset();
-            return false;
-          });
-
-        });
+        <script src="/public/client.js">
         </script>
         </body>
  </html>
