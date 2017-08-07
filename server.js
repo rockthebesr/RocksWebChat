@@ -2,8 +2,11 @@
 var Express = require('express');
 var app = Express();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var socketio = require('socket.io');
+var io = socketio(http);
 var port = process.env.PORT || 3000;
+
+var connectionCounts = 0;
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
@@ -15,8 +18,15 @@ app.use("/public/styles", Express.static(__dirname + '/node_modules/bootstrap/di
 
 
 io.on('connection', function(socket){
+  connectionCounts++
+  io.emit('counts', connectionCounts);
   socket.on('messages', function(msg){
     io.emit('chat message', msg);
+  });
+
+  socket.on('disconnect', () => {
+    connectionCounts--;
+    io.sockets.emit('counts', connectionCounts);
   });
 });
 

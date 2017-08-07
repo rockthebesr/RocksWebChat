@@ -11,6 +11,7 @@ html,body,li,form,ul {
 li {
   list-style: none;
   width: 100vw;
+  text-align: left;
 }
 
 li:nth-child(odd) {
@@ -26,5 +27,4 @@ li:nth-child(odd) {
   padding: 0px;
 }
 #message-send-btn {
-  float: right;
 }

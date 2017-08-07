@@ -8,10 +8,23 @@ socket.on('chat message', function(msg){
   window.scrollTo(0, document.body.scrollHeight);
 });
 
+socket.on('counts', function(counts) {
+  $(".counts-message").text(counts + " people in the chat room");
+})
+
 // sends message to server, resets & prevents default form action
 $('#message-send-btn').click(function() {
   var message = $('#message').val();
   socket.emit('messages', message);
   $('#message').val("");
+  console.log(socket.engine.clientsCount);
   return false;
+});
+
+$('#message').keydown(function(e){
+  var key = e.which;
+  if (key == 13) {
+    $('#message-send-btn').click();
+    e.preventDefault();
+  }
 });
