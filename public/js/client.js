@@ -9,7 +9,7 @@ socket.on('chat message', function(msg){
 });
 
 // sends message to server, resets & prevents default form action
-$('.message-send-btn').click(function() {
+$('#message-send-btn').click(function() {
   var message = $('#message').val();
   socket.emit('messages', message);
   $('#message').val("");
