@@ -9,7 +9,10 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-app.use("/public", Express.static(__dirname + '/public'));
+app.use("/public/js", Express.static(__dirname + '/public/js'));
+app.use("/public/styles", Express.static(__dirname + '/public/styles'));
+app.use("/public/styles", Express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+
 
 io.on('connection', function(socket){
   socket.on('messages', function(msg){

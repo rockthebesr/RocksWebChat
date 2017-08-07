@@ -2,22 +2,33 @@
     <head>
       <title> Rock's Web Chat! </title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" href="public/style.css" />
+      <link rel="stylesheet" href="public/styles/style.css" />
+      <link rel="stylesheet" href="public/styles/bootstrap.min.css">
     </head>
     <body>
-        <h1> Chat! </h1>
+      <div class="row">
+        <div class="col col-sm-12">
+            <h1> Chat! </h1>
+        </div>
+      </div>
 
         <ul id="thread"></ul>
 
-        <form>
-            <input id="message" type="text" placeholder="message" />
-            <input type="submit" value="Send" />
-        </form>
+        <div class="row">
+          <div class="col col-sm-12">
+            <div class="col col-sm-11">
+              <textarea id="message" type="text" placeholder="message"></textarea>
+            </div>
+            <div class="col col-sm-1">
+              <button type="button" class="btn btn-success message-send-btn">Send</button>
+            </div>
+          </div>
+        </div>
 
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
         <script src="/socket.io/socket.io.js"></script>
-        <script src="/public/client.js">
+        <script src="/public/js/client.js">
         </script>
         </body>
  </html>

@@ -4,7 +4,9 @@
   "description": "real time chat app by RLuo",
   "main": "server.js",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "express": "^4.15.3",
+    "react": "^15.6.1",
     "socket.io": "^2.0.3"
   },
   "devDependencies": {},
