@@ -1,44 +1,47 @@
 <html>
-    <head>
-      <title> Rock's Web Chat! </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" href="public/styles/style.css" />
-      <link rel="stylesheet" href="public/styles/bootstrap.min.css">
-    </head>
-    <body>
-      <div class="row">
-        <div class="col col-sm-12">
-            <h1> Chat! </h1>
-        </div>
+
+<head>
+  <title> Rock's Web Chat! </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="public/styles/style.css" />
+  <link rel="stylesheet" href="public/styles/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="row">
+    <div class="col col-sm-12">
+      <h1> Chat! </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-sm-12">
+      <h1 class="counts-message"></h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-xs-12">
+      <ul id="thread"></ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-xs-12">
+      <div class="col col-xs-9">
+        <textarea id="message" type="text" placeholder="message"></textarea>
       </div>
-
-      <div class="row">
-        <div class="col col-sm-12">
-          <h1 class="counts-message"></h1>
-        </div>
+      <div class="col col-xs-3" id="send-btn-col">
+        <button type="button" class="btn btn-success" id="message-send-btn">Send</button>
       </div>
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="col col-xs-12">
-            <ul id="thread"></ul>
-        </div>
-      </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-        <div class="row">
-          <div class="col col-xs-12">
-            <div class="col col-xs-9">
-              <textarea id="message" type="text" placeholder="message"></textarea>
-            </div>
-            <div class="col col-xs-3" id="send-btn-col">
-              <button type="button" class="btn btn-success" id="message-send-btn">Send</button>
-            </div>
-          </div>
-        </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/public/js/client.js">
+  </script>
+</body>
 
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="/public/js/client.js">
-        </script>
-        </body>
- </html>
+</html>
