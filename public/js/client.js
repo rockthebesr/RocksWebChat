@@ -1,11 +1,31 @@
 var socket = io();
+var name = null;
 socket.on('connect', function (data) {
   socket.emit('join', 'Hello server from client');
 });
 
 socket.on('chat message', function (msg) {
-  $('#thread').append($('<li>').text(msg));
-  window.scrollTo(0, document.body.scrollHeight);
+  var lastMsgName = $(".message-name")
+    .last()
+    .text();
+  var msgName = msg.user;
+
+  var message = msg.message;
+  if (lastMsgName === msgName) {
+    var innerHtml = "<div class='message-message'>" + message + "</div>"
+    $("li")
+      .last()
+      .append(innerHtml);
+  } else {
+    var innerHtml = "<div class='message-name'>" + msgName + "</div><div class='message-message'>" + message + "</div>";
+    var li = $('<li>').html(innerHtml);
+    if (msgName != name) {
+      li.addClass("incoming-message");
+    }
+
+    $('#thread').append(li);
+  }
+
 });
 
 socket.on('counts', function (counts) {
@@ -15,9 +35,11 @@ socket.on('counts', function (counts) {
 // sends message to server, resets & prevents default form action
 $('#message-send-btn').click(function () {
   var message = $('#message').val();
-  socket.emit('messages', message);
+  socket.emit('messages', {
+    user: name,
+    message: message
+  });
   $('#message').val("");
-  console.log(socket.engine.clientsCount);
   return false;
 });
 
@@ -26,5 +48,26 @@ $('#message').keydown(function (e) {
   if (key == 13) {
     $('#message-send-btn').click();
     e.preventDefault();
+  }
+});
+
+$('#myModal').on('hidden.bs.modal', function (e) {
+  var nameInput = $("#nameInput").val();
+  if (!nameInput) {
+    e.preventDefault();
+  } else {
+    name = nameInput;
+    sessionStorage.setItem("rocksWebChatName", name);
+    $("#welcomeMessage").text("Hi " + name + ", welcome!")
+  }
+});
+
+$(window).on('load', function () {
+  var chatName = sessionStorage.getItem("rocksWebChatName")
+  if (!chatName) {
+    $('#myModal').modal('show');
+  } else {
+    name = chatName;
+    $("#welcomeMessage").text("Hi " + name + ", welcome!")
   }
 });

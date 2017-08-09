@@ -3,20 +3,41 @@
 <head>
   <title> Rock's Web Chat! </title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="public/styles/style.css" />
   <link rel="stylesheet" href="public/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="public/styles/style.css" />
 </head>
 
 <body>
-  <div class="row">
-    <div class="col col-sm-12">
-      <h1> Chat! </h1>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Welcome to Rocks Web Chat</h4>
+        </div>
+        <div class="modal-body">
+          <span>Please enter your name:</span>
+          <div>
+            <textarea id="nameInput" name="thename" class="required" type="text" placeholder="your name for the chat" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Start chatting</button>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="row">
     <div class="col col-sm-12">
-      <h1 class="counts-message"></h1>
+      <h1 id="welcomeMessage"></h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-sm-12">
+      <span class="counts-message"></span>
     </div>
   </div>
 
@@ -26,19 +47,17 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col col-xs-12">
-      <div class="col col-xs-9">
-        <textarea id="message" type="text" placeholder="message"></textarea>
-      </div>
-      <div class="col col-xs-3" id="send-btn-col">
-        <button type="button" class="btn btn-success" id="message-send-btn">Send</button>
-      </div>
+  <div class="row message-form">
+    <div class="col col-md-11 col-xs-11">
+      <textarea id="message" type="text" placeholder="message"></textarea>
+    </div>
+    <div class="col col-md-1 col-xs-1" id="send-btn-col">
+      <button type="button" class="btn btn-success" id="message-send-btn">Send</button>
     </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
+  <script src="/public/js/bootstrap.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/public/js/client.js">
   </script>

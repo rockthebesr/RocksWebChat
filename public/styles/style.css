@@ -1,30 +1,72 @@
-html, body {
+html,
+body {
   text-align: center;
   font-family: 'Avenir Next', 'Helvetica', 'Arial', sans-serif;
 }
 
-html,body,li,form,ul {
+html,
+body,
+li,
+form,
+ul {
   padding: 0;
   margin: 0;
 }
 
-li {
-  list-style: none;
-  width: 100vw;
-  text-align: left;
+#thread {
+  padding-bottom: 15px;
 }
 
-li:nth-child(odd) {
-  background: #eee;
+li {
+  list-style: none;
+  text-align: left;
+  margin-left: 10px;
+  height: auto;
+  width: auto;
+  white-space: nowrap;
+  border-radius: 15px;
+  border: 2px solid lightskyblue;
+  padding: 10px;
 }
 
 #message {
   font-size: 16px;
   height: 40px;
   width: 100%;
+  margin-left: 10px;
 }
+
 #send-btn-col {
   padding: 0px;
 }
-#message-send-btn {
+
+.message-name {
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.message-message {
+  display: block;
+}
+
+.message-form {
+  margin-top: 15px;
+}
+
+.incoming-message {
+  background: #23BD21;
+}
+
+.counts-message {
+  font-size: 13px;
+  color: lightblue;
+}
+
+.modal-body {
+  font-size: 12px;
+}
+
+#nameInput {
+  width: 50%;
+  height: 25px;
 }

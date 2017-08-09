@@ -12,6 +12,7 @@ app.get('/', function (req, res) {
 });
 
 app.use("/public/js", Express.static(__dirname + '/public/js'));
+app.use("/public/js", Express.static(__dirname + '/node_modules/bootstrap/dist/js'))
 app.use("/public/styles", Express.static(__dirname + '/public/styles'));
 app.use("/public/styles", Express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
