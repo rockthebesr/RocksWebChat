@@ -63,6 +63,14 @@ $('#message').keydown(function (e) {
   }
 });
 
+$('#nameInput').keydown(function (e) {
+  var key = e.which;
+  if (key == 13) {
+    e.preventDefault();
+    $('#submit-name-btn').click();
+  }
+});
+
 $('#myModal').on('hidden.bs.modal', function (e) {
   var nameInput = $("#nameInput").val();
   if (!nameInput) {
