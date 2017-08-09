@@ -1,5 +1,16 @@
 var socket = io();
 var name = null;
+
+function getRandomColor() {
+  var letters = 'BCDEF'.split('');
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * letters.length)];
+  }
+  return color;
+}
+
+var color = getRandomColor();
 socket.on('connect', function (data) {
   socket.emit('join', 'Hello server from client');
 });
@@ -9,7 +20,7 @@ socket.on('chat message', function (msg) {
     .last()
     .text();
   var msgName = msg.user;
-
+  var msgColor = msg.color;
   var message = msg.message;
   if (lastMsgName === msgName) {
     var innerHtml = "<div class='message-message'>" + message + "</div>"
@@ -20,7 +31,7 @@ socket.on('chat message', function (msg) {
     var innerHtml = "<div class='message-name'>" + msgName + "</div><div class='message-message'>" + message + "</div>";
     var li = $('<li>').html(innerHtml);
     if (msgName != name) {
-      li.addClass("incoming-message");
+      li.css("background", msgColor);
     }
 
     $('#thread').append(li);
@@ -37,6 +48,7 @@ $('#message-send-btn').click(function () {
   var message = $('#message').val();
   socket.emit('messages', {
     user: name,
+    color: color,
     message: message
   });
   $('#message').val("");
